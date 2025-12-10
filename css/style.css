@@ -1,17 +1,21 @@
 :root {
-    --primary-color: #0D9488;   /* Teal / Verde Petróleo (Botões e Ícones) */
-    --secondary-color: #134E4A; /* Verde Escuro Profundo (Títulos e Navbar) */
-    --accent-color: #F43F5E;    /* Coral / Rosa Queimado (Hover e Detalhes) */
-    --text-body: #334155;       /* Cinza Azulado (Texto Leitura) */
-    --bg-light: #F0FDFA;        /* Fundo Menta Suave (Seções alternadas) */
+    --primary-color: #0D9488;   /* Teal Base */
+    --primary-dark: #115E59;    /* Teal Escuro */
+    --primary-subtle: #CCFBF1;  /* Teal Claro Fundo */
+    --secondary-color: #134E4A; /* Títulos */
+    --accent-color: #F43F5E;    /* Destaques/Hover */
+    --text-body: #334155;       /* Texto Geral */
+    --bg-light-mint: #F0FDFA;   /* Fundo Alternado */
     --white: #ffffff;
+    --dark: #0f172a;
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
     color: var(--text-body);
-    line-height: 1.6;
+    line-height: 1.7;
     background-color: var(--white);
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -19,122 +23,154 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--secondary-color);
 }
 
-html {
-    scroll-behavior: smooth;
-}
+a { text-decoration: none; }
 
-section {
-    scroll-margin-top: 70px; 
-}
+html { scroll-behavior: smooth; }
+section { scroll-margin-top: 70px; }
 
-.navbar-brand {
-    color: var(--primary-color) !important;
-}
+/* Navbar */
+.navbar-brand { color: var(--primary-color) !important; transition: 0.3s; }
+.navbar-brand:hover { color: var(--primary-dark) !important; }
+.nav-link { color: var(--secondary-color) !important; font-weight: 500; font-size: 0.95rem; }
+.nav-link:hover { color: var(--primary-color) !important; }
 
-.nav-link {
-    color: var(--secondary-color) !important;
-    font-weight: 500;
-}
-
-.nav-link:hover {
-    color: var(--primary-color) !important;
-}
-
+/* Hero Section */
 .hero-section {
     min-height: 90vh;
-    background: linear-gradient(135deg, #fff 0%, var(--bg-light) 100%);
-    padding-top: 80px;
+    background: linear-gradient(135deg, #fff 0%, var(--bg-light-mint) 100%);
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
+.hero-lead {
+    font-size: 1.2rem;
+    color: var(--text-body);
+    margin-bottom: 1.5rem;
+}
+
+.hero-quote {
+    font-size: 1.05rem;
+    color: var(--primary-dark);
+    border-left: 4px solid var(--primary-color);
+    padding-left: 15px;
+    font-style: italic;
+    background: rgba(13, 148, 136, 0.05);
+    padding: 1rem;
+    border-radius: 0 10px 10px 0;
+}
+
+.hero-img {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/* Utilitários de Cor e Fundo */
+.text-primary { color: var(--primary-color) !important; }
+.text-primary-dark { color: var(--primary-dark) !important; }
+.bg-primary { background-color: var(--primary-color) !important; }
+.bg-primary-subtle { background-color: var(--primary-subtle) !important; }
+.bg-light-mint { background-color: var(--bg-light-mint) !important; }
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+/* Botões */
 .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: #fff;
+    padding: 10px 25px;
     transition: all 0.3s ease;
 }
-
 .btn-primary:hover {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
     transform: translateY(-2px);
-    color: #fff;
 }
-
 .btn-outline-primary {
     color: var(--primary-color);
     border-color: var(--primary-color);
 }
-
 .btn-outline-primary:hover {
     background-color: var(--primary-color);
     color: #fff;
 }
-
-.bg-light {
-    background-color: var(--bg-light) !important;
+.shadow-hover:hover {
+    box-shadow: 0 10px 25px rgba(13, 148, 136, 0.3) !important;
 }
 
-.bg-primary {
-    background-color: var(--primary-color) !important;
+.feature-item {
+    transition: transform 0.3s ease;
+    border: 1px solid transparent;
+}
+.feature-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-subtle);
+    background-color: var(--white) !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.text-primary {
-    color: var(--primary-color) !important;
+.card { transition: all 0.3s ease; }
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(13, 148, 136, 0.1) !important;
+}
+.border-primary-left {
+    border-left: 4px solid var(--primary-color) !important;
 }
 
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(13, 148, 136, 0.15) !important; /* Sombra levemente colorida */
-}
-
-.icon-box {
-    color: var(--primary-color);
-}
-
-.step-number {
-    display: inline-flex;
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-weight: bold;
-    font-size: 1.2rem;
 }
 
-.bg-success {
-    background-color: var(--secondary-color) !important;
+.project-card { overflow: hidden; }
+.card-img-wrapper { position: relative; overflow: hidden; }
+.project-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(13, 78, 74, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
+.card-img-wrapper:hover .project-overlay { opacity: 1; }
+.card-img-top { transition: transform 0.5s ease; }
+.card-img-wrapper:hover .card-img-top { transform: scale(1.05); }
+
+.accordion-item { border: none; border-bottom: 1px solid #e2e8f0; }
+.accordion-button:not(.collapsed) {
+    background-color: var(--bg-light-mint);
+    color: var(--primary-dark);
+    box-shadow: none;
+}
+.accordion-button:focus { box-shadow: none; border-color: rgba(13, 148, 136, 0.5); }
+
+.hover-scale { transition: transform 0.3s; }
+.hover-scale:hover { transform: scale(1.05); }
 
 .whatsapp-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
+    width: 60px; height: 60px;
+    bottom: 30px; right: 30px;
     background-color: #25d366;
     color: #FFF;
-    border-radius: 50px;
+    border-radius: 50%;
     text-align: center;
     font-size: 30px;
     box-shadow: 2px 2px 3px #999;
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+    display: flex; align-items: center; justify-content: center;
     transition: all 0.3s ease;
     animation: pulse 2s infinite;
 }
-
-.whatsapp-float:hover {
-    background-color: #128C7E;
-    color: #fff;
-}
+.whatsapp-float:hover { background-color: #128C7E; color: #fff; }
 
 @keyframes pulse {
     0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
@@ -142,12 +178,41 @@ section {
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-@media (max-width: 768px) {
-    .hero-section {
-        text-align: center;
-        padding-bottom: 50px;
-    }
-    .hero-content {
-        margin-bottom: 30px;
-    }
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.letter-spacing-2 { letter-spacing: 2px; }
+.hover-text-primary:hover { color: var(--primary-color) !important; }
+.transition-color { transition: color 0.3s ease; }
+
+/* Efeito de Borda Lateral no Hover */
+.card-hover-border {
+    border-left: 4px solid transparent; /* Borda invisível para não empurrar o conteúdo */
+    transition: all 0.3s ease; /* Animação suave */
+}
+
+.card-hover-border:hover {
+    border-left-color: var(--primary-color); /* A cor aparece ao passar o mouse */
+    transform: translateY(-8px); /* Mantém o efeito de subir */
+    box-shadow: 0 15px 30px rgba(13, 148, 136, 0.1) !important;
+}
+
+/* Forçar a borda primary a usar a cor da marca (Verde/Teal) */
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+.contact-hover {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-hover:hover {
+    transform: translateX(10px); /* Move levemente para a direita */
+    opacity: 0.8;
 }
